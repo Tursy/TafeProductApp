@@ -32,10 +32,18 @@ namespace ProductApps
             try
             {
                 cProduct = new Product(Convert.ToDecimal(priceTextBox.Text), Convert.ToInt16(quantityTextBox.Text));
+                
                 cProduct.calTotalPayment();
                 totalPaymentTextBlock.Text = Convert.ToString(cProduct.TotalPayment);
-                totalChargeTextBlock.Text = Convert.ToString(cProduct.TotalPayment + 25);
-                totalChargeAfterWrapTextBlock.Text = Convert.ToString(cProduct.TotalPayment + 25 + 5);
+
+                cProduct.TotalPayment += 25;
+                totalChargeTextBlock.Text = Convert.ToString(cProduct.TotalPayment);
+
+                cProduct.TotalPayment += 5;
+                totalChargeAfterWrapTextBlock.Text = Convert.ToString(cProduct.TotalPayment);
+
+                cProduct.TotalPayment *= 1.1m;
+                totalChargeAfterGSTTextBlock.Text = Convert.ToString(cProduct.TotalPayment);
             }
             catch (FormatException)
             {
